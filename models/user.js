@@ -7,4 +7,8 @@ const UserSchema = new Schema({
 	messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
 });
 
+UserSchema.virtual('url').get(function () {
+	return `/user/${this._id}`;
+});
+
 module.exports = mongoose.model('User', UserSchema);

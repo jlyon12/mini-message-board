@@ -84,3 +84,16 @@ exports.message_create_post = [
 		}
 	}),
 ];
+
+// Display user message GET request
+exports.message_user_get = asyncHandler(async (req, res, next) => {
+	const userMessages = await Message.find({ sender: req.params.id })
+		.populate('sender')
+		.exec();
+
+	console.log(userMessages);
+	res.render('message_list_user', {
+		title: `Messages by ${userMessages[0].sender.name}`,
+		messages: userMessages,
+	});
+});

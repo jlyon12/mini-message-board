@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body class="h-screen p-1 grid grid-auto-fr gap-4 justify-center bg-slate-950 text-slate-200 md:p-8 ">
+    <h1 class="text-center font-bold text-4xl text-sky-300 m-4">
+        <%= title %>
+    </h1>
+    <div class=" overflow-y-auto flex flex-col justify-center gap-4 p-2 mb-8 mx-2 text-sm rounded-md bg-slate-900 border-slate-900 md:text-base md:p-4 
+    md:border-2 sm:min-w-[600px] md:min-w-[800px]">
+        <% messages.forEach((message)=>{ %>
+            <div class="grid gap-2 p-2  md:text-base ">
+                <p class="font-bold text-md  text-violet-300 md:text-lg">
+                    <%= message.sender.name %>
+                </p>
+                <p>
+                    <%= message.text %>
+                </p>
+                <p class="text-right text-xs  text-slate-400 md:text-sm">
+                    <%= message.timestamp_formatted %>
+                </p>
+
+            </div>
+
+            <% }) %>
+    </div>
+    <button class="mb-8 w-fit mx-auto"> <a href="/"
+            class="bg-violet-500 font-semibold font-lg rounded-md w-fit px-4 py-2 mx-automd:px-6 md:py-4 hover:bg-violet-400 active::bg-violet-400 focus:bg-violet-400">
+            View all messages
+        </a>
+    </button>
+</body>
+
+</html>

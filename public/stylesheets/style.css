@@ -766,6 +766,9 @@ video {
   width: -moz-fit-content;
   width: fit-content;
 }
+.w-1\/2 {
+  width: 50%;
+}
 .min-w-full {
   min-width: 100%;
 }
@@ -1757,6 +1760,12 @@ video {
 .font-semibold {
   font-weight: 600;
 }
+.font-extralight {
+  font-weight: 200;
+}
+.font-light {
+  font-weight: 300;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -2176,6 +2185,10 @@ video {
 .hover\:font-bold:hover {
   font-weight: 700;
 }
+.hover\:text-sky-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(125 211 252 / var(--tw-text-opacity));
+}
 .before\:hover\:text-center:hover::before {
   content: var(--tw-content);
   text-align: center;
@@ -2195,6 +2208,14 @@ video {
   text-align: center;
 }
 @media (min-width: 640px) {
+
+  .sm\:min-w-\[600px\] {
+    min-width: 600px;
+  }
+
+  .sm\:min-w-\[800px\] {
+    min-width: 800px;
+  }
 
   .sm\:underline {
     text-decoration-line: underline;
@@ -2227,6 +2248,30 @@ video {
 
   .md\:mb-0 {
     margin-bottom: 0px;
+  }
+
+  .md\:min-w-\[600px\] {
+    min-width: 600px;
+  }
+
+  .md\:min-w-\[800px\] {
+    min-width: 800px;
+  }
+
+  .md\:grid-flow-row {
+    grid-auto-flow: row;
+  }
+
+  .md\:grid-flow-col {
+    grid-auto-flow: column;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-rows-3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
   }
 
   .md\:border {
