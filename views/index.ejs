@@ -14,23 +14,29 @@
   <h1 class="text-center font-bold text-4xl text-sky-300 m-4">
     <%= title %>
   </h1>
-  <div class=" overflow-y-scroll flex flex-col gap-4 p-2 mb-8 mx-2 text-sm rounded-md bg-slate-900 border-slate-900 md:text-base md:p-4 
+  <div class=" overflow-y-scroll flex flex-col justify-center gap-4 p-2 mb-8 mx-2 text-sm rounded-md bg-slate-900 border-slate-900 md:text-base md:p-4 
     md:border-2">
-    <% messages.forEach((message)=>{ %>
-      <div class="grid gap-2 p-2  md:text-base ">
-        <p class="font-bold text-md  text-violet-300 md:text-lg">
-          <%= message.sender.name %>
-        </p>
-        <p>
-          <%= message.text %>
-        </p>
-        <p class="text-right text-xs  text-slate-400 md:text-sm">
-          <%= message.timestamp %>
-        </p>
-
+    <% if (messages.length===0) { %>
+      <div class="grid gap-2 p-2 place-content-center  text-xl  ">
+        <p>There are no messages.</p>
+        <p>You can add the first one!</p>
       </div>
+      <% } %>
+        <% messages.forEach((message)=>{ %>
+          <div class="grid gap-2 p-2  md:text-base ">
+            <p class="font-bold text-md  text-violet-300 md:text-lg">
+              <%= message.sender.name %>
+            </p>
+            <p>
+              <%= message.text %>
+            </p>
+            <p class="text-right text-xs  text-slate-400 md:text-sm">
+              <%= message.timestamp %>
+            </p>
 
-      <% }) %>
+          </div>
+
+          <% }) %>
   </div>
   <button class="mb-8 w-fit mx-auto"> <a href="/new"
       class="bg-violet-500 font-semibold font-lg rounded-md w-fit px-4 py-2 mx-automd:px-6 md:py-4 hover:bg-violet-400 active::bg-violet-400 focus:bg-violet-400">

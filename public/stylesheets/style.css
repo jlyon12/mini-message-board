@@ -766,6 +766,13 @@ video {
   width: -moz-fit-content;
   width: fit-content;
 }
+.min-w-full {
+  min-width: 100%;
+}
+.min-w-fit {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -1735,6 +1742,10 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .font-bold {
   font-weight: 700;
