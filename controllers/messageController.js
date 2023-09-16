@@ -10,3 +10,10 @@ exports.message_list = asyncHandler(async (req, res, next) => {
 		messages: allMessages,
 	});
 });
+// Display create message GET request
+exports.message_create_get = asyncHandler(async (req, res, next) => {
+	res.render('message_form', {
+		title: `Add New Message`,
+		message: undefined,
+	});
+});
