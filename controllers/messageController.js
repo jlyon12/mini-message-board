@@ -59,11 +59,27 @@ exports.message_create_post = [
 			});
 		} else {
 			// Data is valid
-			await user.save();
-			await message.save();
-			const sender = await User.findById(user._id);
-			await sender.messages.push(message);
-			await sender.save();
+
+			// Does username already exist?
+			const userExists = await User.findOne({ name: req.body.name })
+				.collation({ locale: 'en', strength: 2 })
+				.exec();
+			console.log(userExists);
+			// Associate new message with existing user
+			if (userExists) {
+				await message.save();
+				await Message.findByIdAndUpdate(message.id, { sender: userExists._id });
+				const sender = await User.findById(userExists._id);
+				await sender.messages.push(message);
+				await sender.save();
+			} else {
+				// Associate new message with NEW user
+				await user.save();
+				await message.save();
+				const sender = await User.findById(user._id);
+				await sender.messages.push(message);
+				await sender.save();
+			}
 			res.redirect('/');
 		}
 	}),
