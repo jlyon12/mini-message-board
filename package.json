@@ -28,6 +28,7 @@
 		"morgan": "~1.9.1"
 	},
 	"devDependencies": {
+		"@flydotio/dockerfile": "^0.4.10",
 		"autoprefixer": "^10.4.15",
 		"eslint": "^8.49.0",
 		"eslint-config-prettier": "^9.0.0",
