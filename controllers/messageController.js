@@ -15,7 +15,9 @@ exports.message_list = asyncHandler(async (req, res, next) => {
 exports.message_create_get = asyncHandler(async (req, res, next) => {
 	res.render('message_form', {
 		title: `Add New Message`,
+		user: undefined,
 		message: undefined,
+		errors: undefined,
 	});
 });
 
@@ -27,9 +29,7 @@ exports.message_create_post = [
 		.trim()
 		.isLength({ min: 1 })
 		.escape()
-		.withMessage('Username must be specified')
-		.isAlphanumeric()
-		.withMessage('First name has non-alphanumeric characters.'),
+		.withMessage('Username can not be empty'),
 	body('text')
 		.trim()
 		.isLength({ min: 1 })
@@ -55,6 +55,7 @@ exports.message_create_post = [
 			res.render('message_form', {
 				title: `Add New Message`,
 				message: message,
+				user: user,
 				errors: errors.array(),
 			});
 		} else {
@@ -64,7 +65,6 @@ exports.message_create_post = [
 			const userExists = await User.findOne({ name: req.body.name })
 				.collation({ locale: 'en', strength: 2 })
 				.exec();
-			console.log(userExists);
 			// Associate new message with existing user
 			if (userExists) {
 				await message.save();

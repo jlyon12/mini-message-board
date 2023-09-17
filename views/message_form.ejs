@@ -14,15 +14,26 @@
   <h1 class="text-center font-bold text-4xl text-sky-300 m-4">
     <%= title %>
   </h1>
+
   <form action="" method="POST" class="flex flex-col gap-4 sm:min-w-[600px] md:min-w-[800px]">
     <fieldset class="flex flex-col gap-4">
       <label for="name" class="grid gap-2 font-bold text-lg text-violet-300">Username
-        <input id="name" name="name" type="text" required placeholder="Walrus"
-          value="<%= !message ? '' : message.sender.name %>" class="text-slate-200 bg-slate-700 rounded-md p-2 ">
+        <% if( errors && errors.find((e)=>e.path==="name")){ %>
+          <span class=" text-red-400  font-normal text-base">
+            <%= errors.find((e)=>e.path==="name").msg %>
+          </span>
+          <% } %>
+            <input id="name" name="name" type="text" placeholder="Walrus" value="<%= !user ? '' : user.name %>"
+              class="block text-slate-200 bg-slate-900 rounded-md p-2 ">
       </label>
       <label for="text" class="grid gap-2 font-bold text-lg text-violet-300">Message
-        <textarea id="text" name="text" rows="8" required placeholder="..." value="<%= !message ? '' : message.text %>"
-          class=" text-slate-200 bg-slate-700 rounded-md p-2 "> </textarea>
+        <% if( errors && errors.find((e)=>e.path==="text")){ %>
+          <span class=" text-red-400  font-normal text-base">
+            <%= errors.find((e)=>e.path==="text").msg %>
+          </span>
+          <% } %>
+            <textarea id="text" name="text" rows="8" placeholder="..."
+              class=" text-slate-200 bg-slate-900 rounded-md p-2 "><%= !message ? '' : message.text %></textarea>
       </label>
     </fieldset>
     <button type=" submit"
