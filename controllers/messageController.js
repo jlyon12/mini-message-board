@@ -54,8 +54,8 @@ exports.message_create_post = [
 		if (!errors.isEmpty()) {
 			res.render('message_form', {
 				title: `Add New Message`,
-				message: message,
-				user: user,
+				message,
+				user,
 				errors: errors.array(),
 			});
 		} else {
@@ -91,7 +91,6 @@ exports.message_user_get = asyncHandler(async (req, res, next) => {
 		.populate('sender')
 		.exec();
 
-	console.log(userMessages);
 	res.render('message_list_user', {
 		title: `Messages by ${userMessages[0].sender.name}`,
 		messages: userMessages,

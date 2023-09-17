@@ -34,7 +34,7 @@ async function main() {
 
 async function userCreate(index, name) {
 	const userDetail = {
-		name: name,
+		name,
 	};
 
 	const user = new User(userDetail);
@@ -46,7 +46,7 @@ async function userCreate(index, name) {
 
 async function messageCreate(index, text, user) {
 	const messageDetail = {
-		text: text,
+		text,
 		sender: user,
 	};
 
